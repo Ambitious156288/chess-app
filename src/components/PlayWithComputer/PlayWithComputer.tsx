@@ -6,6 +6,9 @@ import type { Square } from 'chess.js';
 import { useMemo, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 
+import MovesHistory from '@/components/PlayWithComputer/MovesHistory';
+import MovesToChoose from '@/components/PlayWithComputer/MovesToChoose';
+
 const PlayWithComputer = () => {
   const { engine, stockfishLevel, handleChangeStockfishLevel } = useChessEngine();
   const game = useMemo(() => new Chess(), []);
@@ -30,7 +33,6 @@ const PlayWithComputer = () => {
         promotion: piece[1].toLowerCase() ?? 'q',
       });
       setGamePosition(game.fen());
-
       // illegal move
       if (move === null) return false;
       // exit if the game is over
@@ -44,34 +46,43 @@ const PlayWithComputer = () => {
     }
   };
 
+  const movesData = game.history({ verbose: true });
+  const moves = movesData.map(({ piece, to, san }) => `${piece}  ${to} ---- ${san}`);
+
   return (
-    <Styled.ChessboardContainer>
-      {Object.entries(STOCKFISH_LEVELS).map(([level, depth]) => (
-        <button key={level} onClick={() => handleChangeStockfishLevel(depth)}>
-          {level}
+    <>
+      <MovesToChoose availableMoves={game.moves()} />
+
+      <MovesHistory moves={moves} />
+
+      <Styled.ChessboardContainer>
+        {Object.entries(STOCKFISH_LEVELS).map(([level, depth]) => (
+          <button key={level} onClick={() => handleChangeStockfishLevel(depth)}>
+            {level}
+          </button>
+        ))}
+
+        <Chessboard id="PlayVsStockfish" position={gamePosition} onPieceDrop={onDrop} />
+
+        <button
+          onClick={() => {
+            game.reset();
+            setGamePosition(game.fen());
+          }}
+        >
+          New game
         </button>
-      ))}
-
-      <Chessboard id="PlayVsStockfish" position={gamePosition} onPieceDrop={onDrop} />
-
-      <button
-        onClick={() => {
-          game.reset();
-          setGamePosition(game.fen());
-        }}
-      >
-        New game
-      </button>
-      <button
-        onClick={() => {
-          game.undo();
-          game.undo();
-          setGamePosition(game.fen());
-        }}
-      >
-        Undo
-      </button>
-    </Styled.ChessboardContainer>
+        <button
+          onClick={() => {
+            game.undo();
+            game.undo();
+            setGamePosition(game.fen());
+          }}
+        >
+          Undo
+        </button>
+      </Styled.ChessboardContainer>
+    </>
   );
 };
 
