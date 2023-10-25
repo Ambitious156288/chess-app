@@ -46,14 +46,11 @@ const PlayWithComputer = () => {
     }
   };
 
-  const movesData = game.history({ verbose: true });
-  const moves = movesData.map(({ piece, to, san }) => `${piece}  ${to} ---- ${san}`);
-
   return (
     <>
       <MovesToChoose availableMoves={game.moves()} />
 
-      <MovesHistory moves={moves} />
+      <MovesHistory moves={game.history({ verbose: true })} />
 
       <Styled.ChessboardContainer>
         {Object.entries(STOCKFISH_LEVELS).map(([level, depth]) => (

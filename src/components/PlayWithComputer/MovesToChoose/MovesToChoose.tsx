@@ -5,7 +5,21 @@ type Props = {
 };
 
 const MovesToChoose = ({ availableMoves }: Props) => {
-  return <p>Moves to choose: {availableMoves}</p>;
+  const handleChooseMove = (move: string) => {
+    // @TODO
+  };
+
+  return (
+    <>
+      <h3>Moves to choose: </h3>
+
+      {availableMoves.map((move, id: number) => (
+        <Styled.Button key={id} onClick={() => handleChooseMove(move)}>
+          {move}
+        </Styled.Button>
+      ))}
+    </>
+  );
 };
 
 export default MovesToChoose;
