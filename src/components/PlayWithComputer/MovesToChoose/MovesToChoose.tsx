@@ -2,18 +2,18 @@ import * as Styled from './MovesToChoose.styles';
 
 type Props = {
   availableMoves: string[];
+  onMove: (move: string) => void;
 };
 
-const MovesToChoose = ({ availableMoves }: Props) => {
+const MovesToChoose = ({ availableMoves, onMove }: Props) => {
   const handleChooseMove = (move: string) => {
-    // @TODO
+    onMove(move);
   };
 
   return (
     <>
       <h3>Moves to choose: </h3>
-
-      {availableMoves.map((move, id: number) => (
+      {availableMoves.map((move, id) => (
         <Styled.Button key={id} onClick={() => handleChooseMove(move)}>
           {move}
         </Styled.Button>

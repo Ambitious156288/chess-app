@@ -46,9 +46,15 @@ const PlayWithComputer = () => {
     }
   };
 
+  const handleMove = (move: string) => {
+    game.move(move);
+    setGamePosition(game.fen());
+    findBestMove();
+  };
+
   return (
     <>
-      <MovesToChoose availableMoves={game.moves()} />
+      <MovesToChoose availableMoves={game.moves()} onMove={handleMove} />
 
       <MovesHistory moves={game.history({ verbose: true })} />
 

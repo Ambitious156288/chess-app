@@ -1,8 +1,9 @@
+import { STOCKFISH_LEVELS } from '@/consts';
 import Engine from '@/engine';
 import { useEffect, useMemo, useState } from 'react';
 
 const useChessEngine = () => {
-  const [stockfishLevel, setStockfishLevel] = useState(2);
+  const [stockfishLevel, setStockfishLevel] = useState<number>(STOCKFISH_LEVELS.EASY);
 
   useEffect(() => {
     const stockfish = new Worker('./stockfish.js');
