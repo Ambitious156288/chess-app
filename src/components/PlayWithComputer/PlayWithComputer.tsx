@@ -1,8 +1,8 @@
 import * as Styled from './PlayWithComputer.styles';
 import { STOCKFISH_LEVELS } from '@/consts';
 import { useChessEngine } from '@/hooks';
-import { Chess } from 'chess.js';
-import type { Square } from 'chess.js';
+import { Button, Switch } from 'antd';
+import { Chess, type Square } from 'chess.js';
 import { useMemo, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 
@@ -14,6 +14,7 @@ const PlayWithComputer = () => {
   const game = useMemo(() => new Chess(), []);
 
   const [gamePosition, setGamePosition] = useState(game.fen());
+  const [isBoardVisible, setIsBoardVisible] = useState(true);
 
   const findBestMove = () => {
     engine.evaluatePosition(game.fen(), stockfishLevel);
@@ -52,39 +53,48 @@ const PlayWithComputer = () => {
     findBestMove();
   };
 
+  const toggleBoardVisibility = () => {
+    setIsBoardVisible((prev) => !prev);
+  };
+
   return (
     <>
+      {Object.entries(STOCKFISH_LEVELS).map(([level, depth]) => (
+        <Button type="primary" ghost key={level} onClick={() => handleChangeStockfishLevel(depth)}>
+          {level}
+        </Button>
+      ))}
+
       <MovesToChoose availableMoves={game.moves()} onMove={handleMove} />
 
-      <MovesHistory moves={game.history({ verbose: true })} />
+      <Button
+        type="primary"
+        onClick={() => {
+          game.reset();
+          setGamePosition(game.fen());
+        }}
+      >
+        New game
+      </Button>
+      <Button
+        type="primary"
+        onClick={() => {
+          game.undo();
+          game.undo();
+          setGamePosition(game.fen());
+        }}
+      >
+        Undo
+      </Button>
 
-      <Styled.ChessboardContainer>
-        {Object.entries(STOCKFISH_LEVELS).map(([level, depth]) => (
-          <button key={level} onClick={() => handleChangeStockfishLevel(depth)}>
-            {level}
-          </button>
-        ))}
+      <Switch checkedChildren="show board" unCheckedChildren="hide board" onChange={toggleBoardVisibility} />
 
-        <Chessboard id="PlayVsStockfish" position={gamePosition} onPieceDrop={onDrop} />
-
-        <button
-          onClick={() => {
-            game.reset();
-            setGamePosition(game.fen());
-          }}
-        >
-          New game
-        </button>
-        <button
-          onClick={() => {
-            game.undo();
-            game.undo();
-            setGamePosition(game.fen());
-          }}
-        >
-          Undo
-        </button>
-      </Styled.ChessboardContainer>
+      <Styled.GameContainer>
+        <Styled.ChessboardWrapper>
+          <Chessboard id="PlayVsStockfish" position={isBoardVisible ? gamePosition : 'empty'} onPieceDrop={onDrop} />
+        </Styled.ChessboardWrapper>
+        <MovesHistory moves={game.history({ verbose: true })} />
+      </Styled.GameContainer>
     </>
   );
 };

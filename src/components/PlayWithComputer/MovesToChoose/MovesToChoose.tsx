@@ -11,14 +11,16 @@ const MovesToChoose = ({ availableMoves, onMove }: Props) => {
   };
 
   return (
-    <>
+    <Styled.Container>
       <h3>Moves to choose: </h3>
-      {availableMoves.map((move, id) => (
-        <Styled.Button key={id} onClick={() => handleChooseMove(move)}>
-          {move}
-        </Styled.Button>
-      ))}
-    </>
+      <Styled.Moves>
+        {availableMoves.map((move, id) => (
+          <Styled.Button key={id} onClick={() => handleChooseMove(move)}>
+            {move}
+          </Styled.Button>
+        ))}
+      </Styled.Moves>
+    </Styled.Container>
   );
 };
 

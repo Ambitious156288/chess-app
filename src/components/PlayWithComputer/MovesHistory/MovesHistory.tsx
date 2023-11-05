@@ -1,5 +1,5 @@
 import * as Styled from './MovesHistory.styles';
-import { MoveType, generateMovesHistoryTable } from '@/utils';
+import { type MoveType, generateMovesHistoryTable } from '@/utils';
 import type { Move } from 'chess.js';
 import { useEffect, useState } from 'react';
 
@@ -35,7 +35,6 @@ const MovesHistory = ({ moves }: Props) => {
 
   return (
     <>
-      <h4>Moves history:</h4>
       <Styled.Table columns={COLUMNS} dataSource={movesData} pagination={false} />
     </>
   );

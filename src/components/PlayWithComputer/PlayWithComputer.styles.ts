@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
-export const ChessboardContainer = styled.div`
-  width: 676px;
+export const GameContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ChessboardWrapper = styled.div`
+  width: 734px;
 `;
