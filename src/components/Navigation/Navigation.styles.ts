@@ -1,9 +1,9 @@
 import { Menu as AntdMenu } from 'antd';
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+const Container = styled.div``;
 
-export const Menu = styled(AntdMenu)`
+const Menu = styled(AntdMenu)`
   display: flex;
   justify-content: center;
   background: #ddd;
@@ -23,3 +23,5 @@ export const Menu = styled(AntdMenu)`
     }
   }
 `;
+
+export { Container, Menu };

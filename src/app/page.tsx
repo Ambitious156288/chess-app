@@ -1,13 +1,7 @@
 'use client';
 
-import PlayWithComputer from '@/components/PlayWithComputer';
+import PlayWithComputerTabs from '@/components/PlayWithComputerTabs';
 
-const Home = () => {
-  return (
-    <div>
-      <PlayWithComputer />
-    </div>
-  );
-};
+const Home = () => <PlayWithComputerTabs />;
 
 export default Home;
