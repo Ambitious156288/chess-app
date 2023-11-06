@@ -2,16 +2,18 @@ import * as Styled from './PlayWithComputer.styles';
 import { STOCKFISH_LEVELS } from '@/consts';
 import { useChessEngine } from '@/hooks';
 import { Button, Switch } from 'antd';
-import { Chess, type Square } from 'chess.js';
-import { useMemo, useState } from 'react';
+import { type Square } from 'chess.js';
+import { useContext, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
+
+import { gameContext } from '@/context/gameContext';
 
 import MovesHistory from '@/components/PlayWithComputer/MovesHistory';
 import MovesToChoose from '@/components/PlayWithComputer/MovesToChoose';
 
 const PlayWithComputer = () => {
   const { engine, stockfishLevel, handleChangeStockfishLevel } = useChessEngine();
-  const game = useMemo(() => new Chess(), []);
+  const game = useContext(gameContext);
 
   const [gamePosition, setGamePosition] = useState(game.fen());
   const [isBoardVisible, setIsBoardVisible] = useState(true);
