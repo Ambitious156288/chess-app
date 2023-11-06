@@ -1,15 +1,23 @@
 import * as Styled from './PlayWithComputerSettings.styles';
-import { Col, Radio, type RadioChangeEvent, Row } from 'antd';
-import React, { useState } from 'react';
+import { STOCKFISH_LEVELS } from '@/consts';
+import { Col, Radio, type RadioChangeEvent } from 'antd';
+import React, { useContext, useState } from 'react';
+
+import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 
 const PlayWithComputerSettings = () => {
-  const [value, setValue] = useState(1);
+  const { handleChangeStockfishLevel } = useContext(stockfishLevelContext);
 
-  const onChange = (e: RadioChangeEvent) => {
-    setValue(e.target.value);
+  const [stockfishStrength, setStockfishStrength] = useState(STOCKFISH_LEVELS.EASY);
+  const [color, setColor] = useState(1);
+
+  const handleStockfishStrengthChange = (e: RadioChangeEvent) => {
+    setStockfishStrength(e.target.value);
   };
 
-  // @TODO add logic
+  const handleColorChange = (e: RadioChangeEvent) => {
+    setColor(e.target.value);
+  };
 
   return (
     <>
@@ -18,7 +26,7 @@ const PlayWithComputerSettings = () => {
           <p>You play:</p>
         </Col>
         <Col span={6}>
-          <Radio.Group onChange={onChange} value={value} optionType="button" buttonStyle="solid">
+          <Radio.Group onChange={handleColorChange} value={color} optionType="button" buttonStyle="solid">
             <Radio value={1}>White</Radio>
             <Radio value={2}>Black</Radio>
           </Radio.Group>
@@ -30,10 +38,17 @@ const PlayWithComputerSettings = () => {
           <p>Stockfish strength:</p>
         </Col>
         <Col span={6}>
-          <Radio.Group onChange={onChange} value={value} optionType="button" buttonStyle="solid">
-            <Radio value={1}>Easy</Radio>
-            <Radio value={2}>Medium</Radio>
-            <Radio value={3}>Hard</Radio>
+          <Radio.Group
+            onChange={handleStockfishStrengthChange}
+            value={stockfishStrength}
+            optionType="button"
+            buttonStyle="solid"
+          >
+            {Object.entries(STOCKFISH_LEVELS).map(([level, depth]) => (
+              <Radio key={depth} value={depth} onClick={() => handleChangeStockfishLevel(depth)}>
+                {level}
+              </Radio>
+            ))}
           </Radio.Group>
         </Col>
       </Styled.Row>

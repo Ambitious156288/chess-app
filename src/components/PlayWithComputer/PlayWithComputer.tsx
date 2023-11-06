@@ -1,5 +1,4 @@
 import * as Styled from './PlayWithComputer.styles';
-import { STOCKFISH_LEVELS } from '@/consts';
 import { useChessEngine } from '@/hooks';
 import { Button, Switch } from 'antd';
 import { type Square } from 'chess.js';
@@ -7,13 +6,16 @@ import { useContext, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 
 import { gameContext } from '@/context/gameContext';
+import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 
 import MovesHistory from '@/components/PlayWithComputer/MovesHistory';
 import MovesToChoose from '@/components/PlayWithComputer/MovesToChoose';
 
 const PlayWithComputer = () => {
-  const { engine, stockfishLevel, handleChangeStockfishLevel } = useChessEngine();
+  const { engine } = useChessEngine();
+
   const game = useContext(gameContext);
+  const { stockfishLevel } = useContext(stockfishLevelContext);
 
   const [gamePosition, setGamePosition] = useState(game.fen());
   const [isBoardVisible, setIsBoardVisible] = useState(true);
@@ -61,12 +63,6 @@ const PlayWithComputer = () => {
 
   return (
     <>
-      {Object.entries(STOCKFISH_LEVELS).map(([level, depth]) => (
-        <Button type="primary" ghost key={level} onClick={() => handleChangeStockfishLevel(depth)}>
-          {level}
-        </Button>
-      ))}
-
       <MovesToChoose availableMoves={game.moves()} onMove={handleMove} />
 
       <Button
