@@ -102,7 +102,7 @@ const PlayWithComputer = () => {
             boardOrientation={playerColor}
           />
         </Styled.ChessboardWrapper>
-        <MovesHistory moves={game.history({ verbose: true })} />
+        <MovesHistory moves={game.history({ verbose: true })} isVisible={game.history().length !== 0} />
       </Styled.GameContainer>
     </>
   );

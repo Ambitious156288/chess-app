@@ -23,9 +23,10 @@ const COLUMNS = [
 
 type Props = {
   moves: Move[];
+  isVisible: boolean;
 };
 
-const MovesHistory = ({ moves }: Props) => {
+const MovesHistory = ({ moves, isVisible }: Props) => {
   const [movesData, setMovesData] = useState<MoveType[]>([]);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const MovesHistory = ({ moves }: Props) => {
 
   return (
     <>
-      <Styled.Table columns={COLUMNS} dataSource={movesData} pagination={false} />
+      <Styled.Table columns={COLUMNS} dataSource={movesData} pagination={false} isVisible={isVisible} />
     </>
   );
 };
