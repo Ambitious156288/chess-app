@@ -62,13 +62,19 @@ const PlayWithComputer = () => {
     setIsBoardVisible((prev) => !prev);
   };
 
-  const resetGame = () => {
+  const handleResetGame = () => {
     game.reset();
     setGamePosition(game.fen());
   };
 
+  const handleUndoMove = () => {
+    game.undo();
+    game.undo();
+    setGamePosition(game.fen());
+  };
+
   useEffect(() => {
-    resetGame();
+    handleResetGame();
 
     if (playerColor === PLAYER_COLORS.BLACK) findBestMove();
   }, [playerColor, stockfishLevel]);
@@ -76,22 +82,6 @@ const PlayWithComputer = () => {
   return (
     <>
       <MovesToChoose availableMoves={game.moves()} onMove={handleMove} />
-
-      <Button type="primary" onClick={resetGame}>
-        New game
-      </Button>
-      <Button
-        type="primary"
-        onClick={() => {
-          game.undo();
-          game.undo();
-          setGamePosition(game.fen());
-        }}
-      >
-        Undo
-      </Button>
-
-      <Switch checkedChildren="show board" unCheckedChildren="hide board" onChange={toggleBoardVisibility} />
 
       <Styled.GameContainer>
         <Styled.ChessboardWrapper>
@@ -101,8 +91,9 @@ const PlayWithComputer = () => {
             onPieceDrop={onDrop}
             boardOrientation={playerColor}
           />
+          <Switch checkedChildren="show board" unCheckedChildren="hide board" onChange={toggleBoardVisibility} />
         </Styled.ChessboardWrapper>
-        <MovesHistory moves={game.history({ verbose: true })} isVisible={game.history().length !== 0} />
+        <MovesHistory game={game} onResetGame={handleResetGame} onUndoMove={handleUndoMove} />
       </Styled.GameContainer>
     </>
   );

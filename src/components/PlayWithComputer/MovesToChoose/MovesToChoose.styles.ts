@@ -5,14 +5,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 15px;
+  height: 160px;
+  margin: -20px 0 15px;
 `;
 
 const Moves = styled.div`
-  max-width: 70%;
+  max-width: 85%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: -10px;
 `;
 
 const Button = styled(AntdButton)`

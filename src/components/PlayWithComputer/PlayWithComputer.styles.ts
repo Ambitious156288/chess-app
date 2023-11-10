@@ -7,7 +7,8 @@ const GameContainer = styled.div`
 `;
 
 const ChessboardWrapper = styled.div`
-  width: 630px;
+  width: 660px;
+  margin-right: 20px;
 `;
 
 export { GameContainer, ChessboardWrapper };
