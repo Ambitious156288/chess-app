@@ -1,15 +1,21 @@
 import * as Styled from './PlayWithComputerSettings.styles';
-import { STOCKFISH_LEVELS } from '@/consts';
-import { Col, Radio, type RadioChangeEvent } from 'antd';
-import React, { useContext, useState } from 'react';
+import { PLAYER_COLORS, STOCKFISH_LEVELS } from '@/consts';
+import { Radio, type RadioChangeEvent } from 'antd';
+import React, { useContext, useEffect, useState } from 'react';
 
+import { gameContext } from '@/context/gameContext';
 import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 
-const PlayWithComputerSettings = () => {
-  const { handleChangeStockfishLevel } = useContext(stockfishLevelContext);
+type PlayWithComputerSettingsType = {
+  onNext: () => void;
+};
 
-  const [stockfishStrength, setStockfishStrength] = useState(STOCKFISH_LEVELS.EASY);
-  const [color, setColor] = useState(1);
+const PlayWithComputerSettings = ({ onNext }: PlayWithComputerSettingsType) => {
+  const { handleChangeStockfishLevel } = useContext(stockfishLevelContext);
+  const { handleChangePlayerColor } = useContext(gameContext);
+
+  const [stockfishStrength, setStockfishStrength] = useState<number>(STOCKFISH_LEVELS.EASY);
+  const [color, setColor] = useState(PLAYER_COLORS.WHITE);
 
   const handleStockfishStrengthChange = (e: RadioChangeEvent) => {
     setStockfishStrength(e.target.value);
@@ -19,25 +25,29 @@ const PlayWithComputerSettings = () => {
     setColor(e.target.value);
   };
 
+  useEffect(() => {
+    handleChangePlayerColor(color);
+  }, [color]);
+
   return (
-    <>
+    <Styled.Container>
       <Styled.Row>
-        <Col span={4}>
+        <Styled.Col span={12}>
           <p>You play:</p>
-        </Col>
-        <Col span={6}>
+        </Styled.Col>
+        <Styled.Col span={12}>
           <Radio.Group onChange={handleColorChange} value={color} optionType="button" buttonStyle="solid">
-            <Radio value={1}>White</Radio>
-            <Radio value={2}>Black</Radio>
+            <Radio value={PLAYER_COLORS.WHITE}>White</Radio>
+            <Radio value={PLAYER_COLORS.BLACK}>Black</Radio>
           </Radio.Group>
-        </Col>
+        </Styled.Col>
       </Styled.Row>
 
       <Styled.Row>
-        <Col span={4}>
+        <Styled.Col span={12}>
           <p>Stockfish strength:</p>
-        </Col>
-        <Col span={6}>
+        </Styled.Col>
+        <Styled.Col span={12}>
           <Radio.Group
             onChange={handleStockfishStrengthChange}
             value={stockfishStrength}
@@ -50,9 +60,13 @@ const PlayWithComputerSettings = () => {
               </Radio>
             ))}
           </Radio.Group>
-        </Col>
+        </Styled.Col>
       </Styled.Row>
-    </>
+
+      <Styled.Button type="primary" shape="round" onClick={onNext}>
+        Next
+      </Styled.Button>
+    </Styled.Container>
   );
 };
 

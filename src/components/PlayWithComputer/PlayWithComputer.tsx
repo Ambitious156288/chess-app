@@ -1,8 +1,9 @@
 import * as Styled from './PlayWithComputer.styles';
+import { PLAYER_COLORS } from '@/consts';
 import { useChessEngine } from '@/hooks';
 import { Button, Switch } from 'antd';
 import { type Square } from 'chess.js';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
 
 import { gameContext } from '@/context/gameContext';
@@ -14,7 +15,7 @@ import MovesToChoose from '@/components/PlayWithComputer/MovesToChoose';
 const PlayWithComputer = () => {
   const { engine } = useChessEngine();
 
-  const game = useContext(gameContext);
+  const { game, playerColor } = useContext(gameContext);
   const { stockfishLevel } = useContext(stockfishLevelContext);
 
   const [gamePosition, setGamePosition] = useState(game.fen());
@@ -61,17 +62,22 @@ const PlayWithComputer = () => {
     setIsBoardVisible((prev) => !prev);
   };
 
+  const resetGame = () => {
+    game.reset();
+    setGamePosition(game.fen());
+  };
+
+  useEffect(() => {
+    resetGame();
+
+    if (playerColor === PLAYER_COLORS.BLACK) findBestMove();
+  }, [playerColor, stockfishLevel]);
+
   return (
     <>
       <MovesToChoose availableMoves={game.moves()} onMove={handleMove} />
 
-      <Button
-        type="primary"
-        onClick={() => {
-          game.reset();
-          setGamePosition(game.fen());
-        }}
-      >
+      <Button type="primary" onClick={resetGame}>
         New game
       </Button>
       <Button
@@ -89,7 +95,12 @@ const PlayWithComputer = () => {
 
       <Styled.GameContainer>
         <Styled.ChessboardWrapper>
-          <Chessboard id="PlayVsStockfish" position={isBoardVisible ? gamePosition : 'empty'} onPieceDrop={onDrop} />
+          <Chessboard
+            id="PlayVsStockfish"
+            position={isBoardVisible ? gamePosition : 'empty'}
+            onPieceDrop={onDrop}
+            boardOrientation={playerColor}
+          />
         </Styled.ChessboardWrapper>
         <MovesHistory moves={game.history({ verbose: true })} />
       </Styled.GameContainer>

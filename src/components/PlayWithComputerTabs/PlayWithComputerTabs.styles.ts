@@ -1,6 +1,14 @@
 import { Tabs as TabsAntd } from 'antd';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  height: calc(100vh - 82px);
+
+  .ant-tabs-content-holder {
+    border: none;
+  }
+`;
+
 const Tabs = styled(TabsAntd)`
   margin-top: 20px;
 
@@ -9,4 +17,4 @@ const Tabs = styled(TabsAntd)`
   }
 `;
 
-export { Tabs };
+export { Container, Tabs };
