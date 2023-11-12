@@ -1,4 +1,5 @@
 import * as Styled from './PlayWithComputer.styles';
+import WinnerInfo from './WinnerInfo';
 import { PLAYER_COLORS } from '@/consts';
 import { useChessEngine } from '@/hooks';
 import { Button, Switch } from 'antd';
@@ -79,9 +80,16 @@ const PlayWithComputer = () => {
     if (playerColor === PLAYER_COLORS.BLACK) findBestMove();
   }, [playerColor, stockfishLevel]);
 
+  const isCheckmate = game.isCheckmate();
+  const isDraw = game.isDraw();
+
   return (
     <>
-      <MovesToChoose availableMoves={game.moves()} onMove={handleMove} />
+      {isCheckmate || isDraw ? (
+        <WinnerInfo isCheckmate={isCheckmate} isDraw={isDraw} turn={game.turn()} />
+      ) : (
+        <MovesToChoose availableMoves={game.moves()} onMove={handleMove} />
+      )}
 
       <Styled.GameContainer>
         <Styled.ChessboardWrapper>
