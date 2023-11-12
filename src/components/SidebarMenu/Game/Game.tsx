@@ -1,8 +1,8 @@
-import * as Styled from './PlayWithComputer.styles';
+import * as Styled from './Game.styles';
 import WinnerInfo from './WinnerInfo';
 import { PLAYER_COLORS } from '@/consts';
 import { useChessEngine } from '@/hooks';
-import { Button, Switch } from 'antd';
+import { Switch } from 'antd';
 import { type Square } from 'chess.js';
 import { useContext, useEffect, useState } from 'react';
 import { Chessboard } from 'react-chessboard';
@@ -10,10 +10,10 @@ import { Chessboard } from 'react-chessboard';
 import { gameContext } from '@/context/gameContext';
 import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 
-import MovesHistory from '@/components/PlayWithComputer/MovesHistory';
-import MovesToChoose from '@/components/PlayWithComputer/MovesToChoose';
+import MovesHistory from '@/components/SidebarMenu/Game/MovesHistory';
+import MovesToChoose from '@/components/SidebarMenu/Game/MovesToChoose';
 
-const PlayWithComputer = () => {
+const Game = () => {
   const { engine } = useChessEngine();
 
   const { game, playerColor } = useContext(gameContext);
@@ -26,8 +26,10 @@ const PlayWithComputer = () => {
     engine.evaluatePosition(game.fen(), stockfishLevel);
     engine.onMessage(({ bestMove }) => {
       if (bestMove) {
-        game.move(bestMove);
-        setGamePosition(game.fen());
+        setTimeout(() => {
+          game.move(bestMove);
+          setGamePosition(game.fen());
+        }, 500);
       }
     });
   };
@@ -39,7 +41,7 @@ const PlayWithComputer = () => {
         to: targetSquare,
         promotion: piece[1].toLowerCase() ?? 'q',
       });
-      setGamePosition(game.fen());
+
       // illegal move
       if (move === null) return false;
       // exit if the game is over
@@ -101,10 +103,14 @@ const PlayWithComputer = () => {
           />
           <Switch checkedChildren="show board" unCheckedChildren="hide board" onChange={toggleBoardVisibility} />
         </Styled.ChessboardWrapper>
-        <MovesHistory game={game} onResetGame={handleResetGame} onUndoMove={handleUndoMove} />
+        <MovesHistory
+          moves={game.history({ verbose: true })}
+          onResetGame={handleResetGame}
+          onUndoMove={handleUndoMove}
+        />
       </Styled.GameContainer>
     </>
   );
 };
 
-export default PlayWithComputer;
+export default Game;

@@ -1,7 +1,6 @@
 import * as Styled from './MovesHistory.styles';
 import { type MoveType, generateMovesHistoryTable } from '@/utils';
-import { Button } from 'antd';
-import { type Chess } from 'chess.js';
+import { type Move } from 'chess.js';
 import { useEffect, useState } from 'react';
 
 const COLUMNS = [
@@ -23,16 +22,13 @@ const COLUMNS = [
 ];
 
 type Props = {
-  game: Chess;
+  moves: Move[];
   onResetGame: () => void;
   onUndoMove: () => void;
 };
 
-const MovesHistory = ({ game, onResetGame, onUndoMove }: Props) => {
+const MovesHistory = ({ moves, onResetGame, onUndoMove }: Props) => {
   const [movesData, setMovesData] = useState<MoveType[]>([]);
-
-  const moves = game.history({ verbose: true });
-  const isVisible = game.history().length !== 0;
 
   useEffect(() => {
     const generatedMovesHistoryTable = generateMovesHistoryTable(moves);
@@ -40,9 +36,8 @@ const MovesHistory = ({ game, onResetGame, onUndoMove }: Props) => {
   }, [moves]);
 
   return (
-    <Styled.Container $isVisible={isVisible}>
+    <Styled.Container $isVisible={moves.length !== 0}>
       <Styled.Table columns={COLUMNS} dataSource={movesData} pagination={false} scroll={{ y: 300 }} />
-
       <Styled.Row>
         <Styled.Button type="primary" onClick={onResetGame}>
           New game

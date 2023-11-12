@@ -1,5 +1,5 @@
 import Engine from '@/engine';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 
 import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 

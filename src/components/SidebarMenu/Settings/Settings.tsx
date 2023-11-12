@@ -1,16 +1,16 @@
-import * as Styled from './PlayWithComputerSettings.styles';
+import * as Styled from './Settings.styles';
 import { PLAYER_COLORS, STOCKFISH_LEVELS } from '@/consts';
 import { Radio, type RadioChangeEvent } from 'antd';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { gameContext } from '@/context/gameContext';
 import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 
-type PlayWithComputerSettingsType = {
+type Props = {
   onNext: () => void;
 };
 
-const PlayWithComputerSettings = ({ onNext }: PlayWithComputerSettingsType) => {
+const Settings = ({ onNext }: Props) => {
   const { handleChangeStockfishLevel } = useContext(stockfishLevelContext);
   const { handleChangePlayerColor } = useContext(gameContext);
 
@@ -70,4 +70,4 @@ const PlayWithComputerSettings = ({ onNext }: PlayWithComputerSettingsType) => {
   );
 };
 
-export default PlayWithComputerSettings;
+export default Settings;

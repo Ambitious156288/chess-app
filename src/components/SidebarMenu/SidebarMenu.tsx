@@ -1,13 +1,11 @@
-import * as Styled from './PlayWithComputerTabs.styles';
+import Game from './Game/Game';
+import Settings from './Settings';
+import { type KeyType } from './SidebarMenu.model';
+import * as Styled from './SidebarMenu.styles';
 import { TAB_KEYS } from '@/consts';
 import { useState } from 'react';
 
-import PlayWithComputer from '@/components/PlayWithComputer';
-import PlayWithComputerSettings from '@/components/PlayWithComputerSettings';
-
-type KeyType = TAB_KEYS.SETTINGS | TAB_KEYS.GAME;
-
-const PlayWithComputerTabs = () => {
+const SidebarMenu = () => {
   const [activeKey, setActiveKey] = useState<KeyType>(TAB_KEYS.SETTINGS);
 
   const handleChangeTab = () => {
@@ -18,12 +16,12 @@ const PlayWithComputerTabs = () => {
     {
       key: TAB_KEYS.SETTINGS,
       label: 'Settings',
-      children: <PlayWithComputerSettings onNext={handleChangeTab} />,
+      children: <Settings onNext={handleChangeTab} />,
     },
     {
       key: TAB_KEYS.GAME,
       label: 'Game',
-      children: <PlayWithComputer />,
+      children: <Game />,
     },
   ];
 
@@ -34,4 +32,4 @@ const PlayWithComputerTabs = () => {
   );
 };
 
-export default PlayWithComputerTabs;
+export default SidebarMenu;

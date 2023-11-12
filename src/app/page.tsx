@@ -3,12 +3,13 @@
 import { GameProvider } from '@/context/gameContext';
 import { StockfishLevelProvider } from '@/context/stockfishLevelContext';
 
-import PlayWithComputerTabs from '@/components/PlayWithComputerTabs';
+import SidebarMenu from '@/components/SidebarMenu';
 
 const Home = () => (
   <GameProvider>
     <StockfishLevelProvider>
-      <PlayWithComputerTabs />
+      <SidebarMenu />
+      {/* PlayWithComputer */}
     </StockfishLevelProvider>
   </GameProvider>
 );
