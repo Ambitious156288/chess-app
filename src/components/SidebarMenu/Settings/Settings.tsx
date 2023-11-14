@@ -1,5 +1,5 @@
 import * as Styled from './Settings.styles';
-import { PLAYER_COLORS, STOCKFISH_LEVELS } from '@/consts';
+import { LOCAL_STORAGE_ITEMS, PLAYER_COLORS, STOCKFISH_LEVELS } from '@/consts';
 import { Radio, type RadioChangeEvent } from 'antd';
 import { useContext, useEffect, useState } from 'react';
 
@@ -14,15 +14,19 @@ const Settings = ({ onNext }: Props) => {
   const { handleChangeStockfishLevel } = useContext(stockfishLevelContext);
   const { handleChangePlayerColor } = useContext(gameContext);
 
-  const [stockfishStrength, setStockfishStrength] = useState<number>(STOCKFISH_LEVELS.EASY);
-  const [color, setColor] = useState(PLAYER_COLORS.WHITE);
+  const [stockfishStrength, setStockfishStrength] = useState<number>(
+    Number(localStorage.getItem(LOCAL_STORAGE_ITEMS.STOCKFISH_LEVELS)) || STOCKFISH_LEVELS.EASY,
+  );
+  const [color, setColor] = useState(localStorage.getItem(LOCAL_STORAGE_ITEMS.PLAYER_COLORS) || PLAYER_COLORS.WHITE);
 
   const handleStockfishStrengthChange = (e: RadioChangeEvent) => {
     setStockfishStrength(e.target.value);
+    localStorage.setItem(LOCAL_STORAGE_ITEMS.STOCKFISH_LEVELS, e.target.value);
   };
 
   const handleColorChange = (e: RadioChangeEvent) => {
     setColor(e.target.value);
+    localStorage.setItem(LOCAL_STORAGE_ITEMS.PLAYER_COLORS, e.target.value);
   };
 
   useEffect(() => {

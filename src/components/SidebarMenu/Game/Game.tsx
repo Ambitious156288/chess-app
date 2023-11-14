@@ -41,6 +41,7 @@ const Game = () => {
         to: targetSquare,
         promotion: piece[1].toLowerCase() ?? 'q',
       });
+      setGamePosition(game.fen());
 
       // illegal move
       if (move === null) return false;
