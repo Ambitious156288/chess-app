@@ -10,8 +10,8 @@ import { Chessboard } from 'react-chessboard';
 import { gameContext } from '@/context/gameContext';
 import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 
-import MovesHistory from '@/components/SidebarMenu/Game/MovesHistory';
-import MovesToChoose from '@/components/SidebarMenu/Game/MovesToChoose';
+import MovesHistory from '@/components/PlayWithComputer/Game/MovesHistory';
+import MovesToChoose from '@/components/PlayWithComputer/Game/MovesToChoose';
 
 const Game = () => {
   const { engine } = useChessEngine();

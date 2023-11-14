@@ -1,7 +1,7 @@
 import Game from './Game/Game';
+import { type KeyType } from './PlayWithComputer.model';
+import * as Styled from './PlayWithComputer.styles';
 import Settings from './Settings';
-import { type KeyType } from './SidebarMenu.model';
-import * as Styled from './SidebarMenu.styles';
 import { TAB_KEYS } from '@/consts';
 import { useState } from 'react';
 

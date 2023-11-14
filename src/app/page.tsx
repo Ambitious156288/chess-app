@@ -3,7 +3,7 @@
 import { GameProvider } from '@/context/gameContext';
 import { StockfishLevelProvider } from '@/context/stockfishLevelContext';
 
-import SidebarMenu from '@/components/SidebarMenu';
+import SidebarMenu from '@/components/PlayWithComputer';
 
 const Home = () => (
   <GameProvider>
