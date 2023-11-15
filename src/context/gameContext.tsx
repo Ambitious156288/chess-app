@@ -2,13 +2,13 @@ import { PLAYER_COLORS } from '@/consts';
 import { Chess } from 'chess.js';
 import { type ReactNode, createContext, useMemo, useState } from 'react';
 
-type gameValuesType = {
+type GameValuesType = {
   game: Chess;
   playerColor: string;
   handleChangePlayerColor: (color: string) => void;
 };
 
-const gameContext = createContext<gameValuesType>({} as gameValuesType);
+const gameContext = createContext<GameValuesType>({} as GameValuesType);
 
 const { Provider } = gameContext;
 
@@ -21,7 +21,7 @@ const GameProvider = ({ children }: { children: ReactNode }) => {
     setPlayerColor(color);
   };
 
-  const gameValues: gameValuesType = {
+  const gameValues: GameValuesType = {
     game,
     playerColor,
     handleChangePlayerColor,

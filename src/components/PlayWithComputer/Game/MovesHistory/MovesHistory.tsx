@@ -1,5 +1,6 @@
 import * as Styled from './MovesHistory.styles';
-import { type MoveType, generateMovesHistoryTable } from '@/utils';
+import { type MoveType } from '@/types';
+import { generateMovesHistoryTable } from '@/utils';
 import { type Move } from 'chess.js';
 import { useEffect, useState } from 'react';
 

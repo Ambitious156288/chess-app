@@ -24,10 +24,18 @@ const Game = () => {
 
   const findBestMove = () => {
     engine.evaluatePosition(game.fen(), stockfishLevel);
-    engine.onMessage(({ bestMove }) => {
+    engine.onMessage((message) => {
+      const { bestMove } = message;
       if (bestMove) {
         setTimeout(() => {
-          game.move(bestMove);
+          const move = {
+            from: bestMove.substring(0, 2),
+            to: bestMove.substring(2, 4),
+            promotion: bestMove.substring(4, 5),
+          };
+          try {
+            game.move(move);
+          } catch (err) {}
           setGamePosition(game.fen());
         }, 500);
       }
@@ -51,7 +59,6 @@ const Game = () => {
       findBestMove();
       return true;
     } catch (error) {
-      console.error('Error:', error);
       return false;
     }
   };

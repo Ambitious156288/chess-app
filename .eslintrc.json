@@ -13,14 +13,10 @@
     "next/core-web-vitals"
   ],
   "rules": {
-    // sort imports
-    "import/order": "error",
-
     // no let exports
     "import/no-mutable-exports": "error",
 
     "import/no-cycle": "error",
-    "import/no-default-export": "error",
 
     // allow {} even though it's unsafe but comes handy
     "@typescript-eslint/ban-types": [
@@ -31,6 +27,8 @@
         }
       }
     ],
+
+    "@typescript-eslint/no-redundant-type-constituents": "off",
 
     "@typescript-eslint/consistent-type-imports": [
       "error",

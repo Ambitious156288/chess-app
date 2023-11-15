@@ -1,4 +1,5 @@
 import * as Styled from './WinnerInfo.styles';
+import { getWinnerMessage } from '@/utils';
 import { type Color } from 'chess.js';
 
 type Props = {
@@ -8,13 +9,7 @@ type Props = {
 };
 
 const WinnerInfo = ({ isCheckmate, isDraw, turn }: Props) => {
-  let message = '';
-
-  if (isCheckmate) {
-    const winner = turn === 'w' ? 'Black' : 'White';
-    message = `${winner} is the winner !!!`;
-  }
-  if (isDraw) message = 'The game is a draw.';
+  const message = getWinnerMessage(isCheckmate, isDraw, turn);
 
   return (
     <Styled.Container>

@@ -1,12 +1,12 @@
 import { STOCKFISH_LEVELS } from '@/consts';
 import { type ReactNode, createContext, useState } from 'react';
 
-type stockfishLevelValuesType = {
+type StockfishLevelValuesType = {
   stockfishLevel: number;
   handleChangeStockfishLevel: (newLevel: number) => void;
 };
 
-const stockfishLevelContext = createContext<stockfishLevelValuesType>({} as stockfishLevelValuesType);
+const stockfishLevelContext = createContext<StockfishLevelValuesType>({} as StockfishLevelValuesType);
 
 const { Provider } = stockfishLevelContext;
 
@@ -17,7 +17,7 @@ const StockfishLevelProvider = ({ children }: { children: ReactNode }) => {
     setStockfishLevel(newLevel);
   };
 
-  const stockfishLevelValues: stockfishLevelValuesType = {
+  const stockfishLevelValues: StockfishLevelValuesType = {
     stockfishLevel,
     handleChangeStockfishLevel,
   };

@@ -1,7 +1,7 @@
 import { Table as AntdTable, Button as ButtonAntd } from 'antd';
 import styled from 'styled-components';
 
-const Container = styled.div<{ $isVisible: string }>`
+const Container = styled.div<{ $isVisible: boolean }>`
   display: flex;
   flex-direction: column;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};

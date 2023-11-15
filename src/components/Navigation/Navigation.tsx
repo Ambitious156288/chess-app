@@ -1,11 +1,11 @@
 'use client';
 
-import * as Styled from './Navigation.styles';
-import { ICONS_URL } from '@/consts';
 import { Menu, type MenuProps } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import * as Styled from './Navigation.styles';
+import { ICONS_URL } from '@/consts';
 
 const LINKS = [
   {

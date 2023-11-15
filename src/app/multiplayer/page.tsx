@@ -1,11 +1,13 @@
 'use client';
 
-const Multiplayer = () => {
+import Multiplayer from '@/components/Multiplayer';
+
+const PlayWithFriend = () => {
   return (
     <div>
-      <h1>Multiplayer</h1>
+      <Multiplayer />
     </div>
   );
 };
 
-export default Multiplayer;
+export default PlayWithFriend;

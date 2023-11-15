@@ -1,11 +1,5 @@
+import { type MoveType } from '@/types';
 import type { Move } from 'chess.js';
-
-type MoveType = {
-  key: number;
-  number: number;
-  w: string;
-  b: string;
-};
 
 const generateMovesHistoryTable = (moves: Move[]) =>
   moves.reduce((acc: MoveType[], el, index, arr) => {
