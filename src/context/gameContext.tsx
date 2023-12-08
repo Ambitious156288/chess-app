@@ -2,10 +2,12 @@ import { PLAYER_COLORS } from '@/consts';
 import { Chess } from 'chess.js';
 import { type ReactNode, createContext, useMemo, useState } from 'react';
 
+type PlayerColorType = 'white' | 'black';
+
 type GameValuesType = {
   game: Chess;
-  playerColor: string;
-  handleChangePlayerColor: (color: string) => void;
+  playerColor: PlayerColorType;
+  handleChangePlayerColor: (color: PlayerColorType) => void;
 };
 
 const gameContext = createContext<GameValuesType>({} as GameValuesType);
@@ -15,9 +17,9 @@ const { Provider } = gameContext;
 const GameProvider = ({ children }: { children: ReactNode }) => {
   const game = useMemo(() => new Chess(), []);
 
-  const [playerColor, setPlayerColor] = useState<string>(PLAYER_COLORS.WHITE);
+  const [playerColor, setPlayerColor] = useState<PlayerColorType>(PLAYER_COLORS.WHITE);
 
-  const handleChangePlayerColor = (color: string) => {
+  const handleChangePlayerColor = (color: PlayerColorType) => {
     setPlayerColor(color);
   };
 
