@@ -1,4 +1,3 @@
-import { Button as ButtonAntd, Col as ColAntd, Row as RowAntd } from 'antd';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -7,17 +6,9 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Row = styled(RowAntd)`
-  align-items: center;
+const Heading = styled.h2`
+  margin-top: 50px;
+  letter-spacing: 3px;
 `;
 
-const Col = styled(ColAntd)`
-  width: 300px;
-`;
-
-const Button = styled(ButtonAntd)`
-  width: 100px;
-  margin-top: 40px;
-`;
-
-export { Container, Row, Col, Button };
+export { Container, Heading };

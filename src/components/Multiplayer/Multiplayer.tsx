@@ -1,10 +1,12 @@
 import * as Styled from './Multiplayer.styles';
+import Image from 'next/image';
 
 const Multiplayer = () => {
   return (
-    <>
-      <div>Multiplayer</div>
-    </>
+    <Styled.Container>
+      <Styled.Heading>Work in progress ...</Styled.Heading>
+      <Image src="/assets/work-in-progress.jpg" height={700} width={1100} alt="work-in-progress" />
+    </Styled.Container>
   );
 };
 
