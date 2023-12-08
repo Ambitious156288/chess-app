@@ -8,18 +8,18 @@ const useLocalStorageState = () => {
   const [stockfishStrength, setStockfishStrength] = useState<number>(
     Number(localStorage.getItem(LOCAL_STORAGE_ITEMS.STOCKFISH_LEVELS)) || STOCKFISH_LEVELS.EASY,
   );
-  const [color, setColor] = useState<PlayerColorType>(
+  const [color, setColor] = useState<PlayerColorType | string>(
     localStorage.getItem(LOCAL_STORAGE_ITEMS.PLAYER_COLORS) || PLAYER_COLORS.WHITE,
   );
 
   const handleStockfishStrengthChange = (e: RadioChangeEvent) => {
-    const value = e.target.value;
-    setStockfishStrength(value);
+    const value = e.target.value as string;
+    setStockfishStrength(Number(value));
     localStorage.setItem(LOCAL_STORAGE_ITEMS.STOCKFISH_LEVELS, value);
   };
 
   const handleColorChange = (e: RadioChangeEvent) => {
-    const value = e.target.value;
+    const value = e.target.value as PlayerColorType;
     setColor(value);
     localStorage.setItem(LOCAL_STORAGE_ITEMS.PLAYER_COLORS, value);
   };

@@ -4,7 +4,7 @@ import { useLocalStorageState } from '@/hooks';
 import { Radio } from 'antd';
 import { useContext, useEffect } from 'react';
 
-import { gameContext } from '@/context/gameContext';
+import { type PlayerColorType, gameContext } from '@/context/gameContext';
 import { stockfishLevelContext } from '@/context/stockfishLevelContext';
 
 type Props = {
@@ -18,7 +18,7 @@ const Settings = ({ onNext }: Props) => {
   const { stockfishStrength, color, handleStockfishStrengthChange, handleColorChange } = useLocalStorageState();
 
   useEffect(() => {
-    handleChangePlayerColor(color);
+    handleChangePlayerColor(color as PlayerColorType);
   }, [color]);
 
   return (
