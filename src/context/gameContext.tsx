@@ -2,7 +2,7 @@ import { PLAYER_COLORS } from '@/consts';
 import { Chess } from 'chess.js';
 import { type ReactNode, createContext, useMemo, useState } from 'react';
 
-type PlayerColorType = 'white' | 'black';
+export type PlayerColorType = 'white' | 'black';
 
 type GameValuesType = {
   game: Chess;
