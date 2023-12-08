@@ -40,9 +40,7 @@ const MovesHistory = ({ moves, onResetGame, onUndoMove }: Props) => {
     <Styled.Container $isVisible={moves.length !== 0}>
       <Styled.Table columns={COLUMNS} dataSource={movesData} pagination={false} scroll={{ y: 300 }} />
       <Styled.Row>
-        <Styled.Button type="primary" onClick={onResetGame}>
-          New game
-        </Styled.Button>
+        <Styled.Button onClick={onResetGame}>New game</Styled.Button>
         <Styled.Button type="primary" onClick={onUndoMove}>
           Undo
         </Styled.Button>
