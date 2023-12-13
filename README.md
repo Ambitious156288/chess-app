@@ -1,4 +1,4 @@
-# <center>Chess app</center>
+# <div align="center">Chess app</div>
 
 <a href="@TODO -> LIVE_PREVIEW"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702255461/chess-app/README/chess-app-main_ggw2sj.png" alt="chess-app"></a>
 
@@ -102,8 +102,8 @@ The project's journey has been instrumental in enhancing my technical skills and
 <br/>
 <br/>
 
-<center>
+<div align="center">
     <a href="#top" style="color:steelblue;" >
         <img src="https://res.cloudinary.com/draikc6a4/image/upload/v1702475953/chess-app/README/up-arrow_boutm8.png" width="50"/>
     </a>
-</center>
+</div>
