@@ -34,6 +34,39 @@ The online chess application is a platform for playing chess against a computer 
 
   <a href="@TODO -> LIVE_PREVIEW"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702437459/chess-app/README/chess-app-work-in-progress_lyghmq.png" alt="chess-app"></a>
 
+# 🤖 What I've Learned
+
+The section aims to showcase the most significant challenges faced during this project.
+
+### 🎨 Technologies Explored:
+
+- **_Next.js, Express.js (work in progress 💪):_** Explored these frameworks extensively for building user interfaces and server.
+- **_Chess.js:_** Utilized Chess.js library for managing chess game logic and moves.
+- **_Websockets (work in progress 💪):_** Explored and implemented real-time communication for multiplayer functionalities using Socket.io.
+
+### 🚀 Learning Through Challenges:
+
+- **_Problem-solving Skills:_** Faced various roadblocks that enhanced my problem-solving skills in web development.
+- <b>Project Structure:</b> Gained insights into organizing and structuring larger projects efficiently.
+
+### 🛫 Challenges Overcome:
+
+- **_Real-time communication implementation (work in progress 💪):_** Understanding and implementing Websockets for multiplayer functionality was a steep learning curve.
+- **_Game Logic and State Management:_** Managing the game state and implementing features like setting Stockfish engine to blindfold chess mode and webbworkers were challenging aspects.
+
+The project's journey has been instrumental in enhancing my technical skills and problem-solving abilities, providing hands-on experience in implementing real-time communication and game mechanics.
+
+# 🙌 Built With
+
+Major frameworks and libraries used:
+
+- Next.js
+- Express.js
+- chess.js
+- react-chessboard
+- webworkers
+- socket.io
+
 # 🤸 Quickstart
 
 Setting up your project locally. To get a local copy up and running follow these simple steps.
@@ -65,39 +98,6 @@ npm i
 ```sh
 npm start
 ```
-
-# 🙌 Built With
-
-Major frameworks and libraries used:
-
-- Next.js
-- Express.js
-- chess.js
-- react-chessboard
-- webworkers
-- socket.io
-
-# 🤖 What I've Learned
-
-The section aims to showcase the most significant challenges faced during this project.
-
-### 🎨 Technologies Explored:
-
-- **_Next.js, Express.js (work in progress 💪):_** Explored these frameworks extensively for building user interfaces and server.
-- **_Chess.js:_** Utilized Chess.js library for managing chess game logic and moves.
-- **_Websockets (work in progress 💪):_** Explored and implemented real-time communication for multiplayer functionalities using Socket.io.
-
-### 🚀 Learning Through Challenges:
-
-- **_Problem-solving Skills:_** Faced various roadblocks that enhanced my problem-solving skills in web development.
-- <b>Project Structure:</b> Gained insights into organizing and structuring larger projects efficiently.
-
-### 🛫 Challenges Overcome:
-
-- **_Real-time communication implementation (work in progress 💪):_** Understanding and implementing Websockets for multiplayer functionality was a steep learning curve.
-- **_Game Logic and State Management:_** Managing the game state and implementing features like setting Stockfish engine to blindfold chess mode and webbworkers were challenging aspects.
-
-The project's journey has been instrumental in enhancing my technical skills and problem-solving abilities, providing hands-on experience in implementing real-time communication and game mechanics.
 
 <br/>
 <br/>
