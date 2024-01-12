@@ -1,6 +1,6 @@
 # <div align="center">Chess app</div>
 
-<a href="@TODO -> LIVE_PREVIEW"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702255461/chess-app/README/chess-app-main_ggw2sj.png" alt="chess-app"></a>
+<a href="https://chess-app-blindfold.vercel.app"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702255461/chess-app/README/chess-app-main_ggw2sj.png" alt="chess-app"></a>
 
 # 💼 About The Project
 
@@ -15,8 +15,8 @@ The online chess application is a platform for playing chess against a computer 
 - undo move
 - new game
 
-  <a href="@TODO -> LIVE_PREVIEW"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702437376/chess-app/README/chess-app-settings_wkywlc.png" alt="chess-app"></a>
-  <a href="@TODO -> LIVE_PREVIEW"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702255461/chess-app/README/chess-app-main_ggw2sj.png" alt="chess-app"></a>
+  <a href="https://chess-app-blindfold.vercel.app"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702437376/chess-app/README/chess-app-settings_wkywlc.png" alt="chess-app"></a>
+  <a href="https://chess-app-blindfold.vercel.app"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702255461/chess-app/README/chess-app-main_ggw2sj.png" alt="chess-app"></a>
 
 ## 👨‍🍳 Multiplayer mode (work in progress 💪):
 
@@ -32,7 +32,7 @@ The online chess application is a platform for playing chess against a computer 
 
   > 📜 The application is still in development, and the multiplayer mode is currently under construction.
 
-  <a href="@TODO -> LIVE_PREVIEW"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702437459/chess-app/README/chess-app-work-in-progress_lyghmq.png" alt="chess-app"></a>
+  <a href="https://chess-app-blindfold.vercel.app"><img width="728" src="https://res.cloudinary.com/draikc6a4/image/upload/v1702437459/chess-app/README/chess-app-work-in-progress_lyghmq.png" alt="chess-app"></a>
 
 # 🤖 What I've Learned
 
