@@ -9,7 +9,7 @@ const useChessEngine = () => {
   const { stockfishLevel } = useContext(stockfishLevelContext);
 
   useEffect(() => {
-    const stockfish = new Worker('./stockfish.js');
+    const stockfish = new Worker('../../public/stockfish.js');
     const DEPTH = stockfishLevel;
     const FEN_POSITION = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
     stockfish.postMessage('uci');

@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 /*!
  * Stockfish.js (http://github.com/nmrugg/stockfish.js)
  * License: GPL
@@ -8,8 +6,6 @@
 /*
  * Description of the universal chess interface (UCI)  https://gist.github.com/aliostad/f4470274f39d29b788c1b09519e67372/
  */
-
-const stockfish = new Worker('./stockfish.js');
 
 type EngineMessage = {
   /** stockfish engine message in UCI format*/
@@ -34,7 +30,7 @@ export default class Engine {
   isReady: boolean;
 
   constructor() {
-    this.stockfish = stockfish;
+    this.stockfish = new Worker('/stockfish.js');
     this.isReady = false;
     this.onMessage = (callback) => {
       this.stockfish.addEventListener('message', (e) => {
